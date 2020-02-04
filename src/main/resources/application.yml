@@ -1,0 +1,16 @@
+server:
+    port: 9094
+
+spring:
+    datasource:
+        url: "jdbc:postgresql://localhost:5432/test"
+        username: postgres
+        password: PritikaRai19@
+        platform: postgres
+    jpa:
+        hibernate:
+        ddl-auto: create
+        show-sql: true
+        generate-ddl: true
+        database: POSTGRESQL
+
