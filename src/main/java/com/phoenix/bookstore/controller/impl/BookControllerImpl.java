@@ -2,12 +2,10 @@ package com.phoenix.bookstore.controller.impl;
 
 import com.phoenix.bookstore.controller.BookController;
 import com.phoenix.bookstore.model.vo.Book;
+import com.phoenix.bookstore.repository.BookRepository;
 import com.phoenix.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +14,7 @@ import java.util.List;
 public class BookControllerImpl implements BookController {
     @Autowired
     BookService bookService;
+    BookRepository repo;
 
     @Override
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -35,5 +34,18 @@ public class BookControllerImpl implements BookController {
         book.setBookName(b.getBookName());
         book.setBookPrice(b.getBookPrice());
         bookService.saveBook(book);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteEachBook(@PathVariable long id)
+    {
+        Book b = new Book();
+        bookService.deleteBook(id);
+    }
+
+    @PutMapping(path="/")
+    public Book saveorUpdateBook(@RequestBody Book b)
+    {
+        bookService.updateBook(b);
+        return b;
     }
 }

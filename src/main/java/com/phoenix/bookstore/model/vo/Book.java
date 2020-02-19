@@ -9,7 +9,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     String bookName;
     Double bookPrice;
@@ -30,4 +30,7 @@ public class Book {
         this.bookPrice = bookPrice;
     }
 
+    public long getId() {
+        return id;
+    }
 }
