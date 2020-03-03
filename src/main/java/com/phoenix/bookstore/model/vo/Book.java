@@ -1,19 +1,33 @@
 package com.phoenix.bookstore.model.vo;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Book {
+public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     String bookName;
     Double bookPrice;
 
+    @ManyToOne
+    @JoinColumn(name = "author_Id")
+    private Author author;
+
+    public Book ()
+    {
+     System.out.println("Default Constructer");
+    }
+    public Book(String bookName, Double bookPrice,Author author)
+    {
+        this.bookName=bookName;
+        this.bookPrice=bookPrice;
+        this.author=author;
+    }
     public Double getBookPrice() {
         return bookPrice;
     }
@@ -33,4 +47,19 @@ public class Book {
     public long getId() {
         return id;
     }
-}
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    }
+

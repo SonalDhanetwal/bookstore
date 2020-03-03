@@ -31,8 +31,8 @@ public class BookControllerImpl implements BookController {
         System.out.println("book price"+b.getBookPrice());
 
         Book book = new Book();
-        book.setBookName(b.getBookName());
-        book.setBookPrice(b.getBookPrice());
+        /*book.setBookName(b.getBookName());
+        book.setBookPrice(b.getBookPrice());*/
         bookService.saveBook(book);
     }
     @DeleteMapping("/{id}")

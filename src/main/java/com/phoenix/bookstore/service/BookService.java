@@ -1,5 +1,6 @@
 package com.phoenix.bookstore.service;
 
+import com.phoenix.bookstore.model.vo.Author;
 import com.phoenix.bookstore.model.vo.Book;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -14,4 +15,5 @@ public interface BookService {
     void deleteBook(long id);
 
     Book updateBook(Book book);
+
 }
